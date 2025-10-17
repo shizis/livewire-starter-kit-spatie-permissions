@@ -5,7 +5,11 @@
     "description": "The official Laravel starter kit for Livewire with spatie permissions.",
     "keywords": [
         "laravel",
-        "framework"
+        "framework",
+        "starter kit",
+        "livewire",
+        "spatie",
+        "permissions"
     ],
     "license": "MIT",
     "require": {
