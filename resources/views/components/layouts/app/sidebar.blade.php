@@ -15,11 +15,10 @@
 
         <flux:navlist variant="outline">
             <flux:navlist.group :heading="__('Platform')" class="grid">
-                <flux:navlist.item icon="home" :href="route('admin.dashboard')"
+                <flux:navlist.item icon="layout-dashboard" :href="route('admin.dashboard')"
                     :current="request()->routeIs('admin.dashboard')" wire:navigate>{{ __('Dashboard') }}
                 </flux:navlist.item>
-                <flux:navlist.item icon="home" :href="route('admin.dashboard')"
-                    :current="request()->routeIs('admin.dashboard')" wire:navigate>{{ __('Users') }}
+                <flux:navlist.item icon="user" wire:navigate>{{ __('Users') }}
                 </flux:navlist.item>
             </flux:navlist.group>
         </flux:navlist>
@@ -45,6 +44,9 @@
                             <div class="grid flex-1 text-start text-sm leading-tight">
                                 <span class="truncate font-semibold">{{ auth()->user()->name }}</span>
                                 <span class="truncate text-xs">{{ auth()->user()->email }}</span>
+                                <flux:badge size="sm" color="green" class="w-fit! mt-2">
+                                    {{ auth()->user()->getRoleNames()->first() }}
+                                </flux:badge>
                             </div>
                         </div>
                     </div>
@@ -53,7 +55,7 @@
                 <flux:menu.separator />
 
                 <flux:menu.radio.group>
-                    <flux:menu.item :href="route('settings.profile')" icon="cog" wire:navigate>{{ __('Settings') }}
+                    <flux:menu.item :href="route('settings.profile')" icon="settings" wire:navigate>{{ __('Settings') }}
                     </flux:menu.item>
                 </flux:menu.radio.group>
 
