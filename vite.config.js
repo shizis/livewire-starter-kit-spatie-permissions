@@ -14,5 +14,7 @@ export default defineConfig({
     ],
     server: {
         cors: true,
+        hmr: false,
+        usePolling: false
     },
 });
