@@ -11,9 +11,10 @@ use Laravel\Fortify\Features;
 
 Route::get('/', HomeController::class)->name('home');
 
-Route::get('dashboard', Dashboard::class)
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::middleware(['auth', 'verified', 'can:admin_access'])->prefix('admin')->name('admin.')
+    ->group(function () {
+        Route::get('dashboard', Dashboard::class)->name('dashboard');
+    });
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
